@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { auth } from "../utils/firebase.config"
+import { auth } from "../utils/firebase.config";
 
 const SignUp = () => {
 
@@ -15,7 +15,8 @@ const SignUp = () => {
             auth.createUserWithEmailAndPassword(registerEmail.current.value, registerPassword.current.value)
                 .then(async (userAuth) => {
                     await userAuth.user.updateProfile({ displayName })
-                    //console.log(userAuth)
+                    console.log(userAuth)
+                    window.location.reload(); // on reload pour permettre à un nouvel utilisateur de s'inscrire quand on se deconnecte à cause d'un probleme asynchrone
                 })
         } catch (error) {
             console.log(error.message)
