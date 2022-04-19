@@ -1,9 +1,13 @@
 import React from 'react';
+import ConnectModal from './components/ConnectModal';
 
 const App = () => {
   return (
     <div>
-      <h1>WELCOME ON GITTER</h1>
+      <div className="app-header">
+        <ConnectModal />
+      </div>
+      <div className="posts-container"></div>
     </div>
   );
 };
