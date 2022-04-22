@@ -2,7 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyB6ZACu7ud0VyqJQKMDRylpXXPZjic2OwM",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "gitter-5726a.firebaseapp.com",
     projectId: "gitter-5726a",
     storageBucket: "gitter-5726a.appspot.com",
