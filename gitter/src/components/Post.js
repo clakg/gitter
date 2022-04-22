@@ -27,12 +27,16 @@ const Post = ({ post, user }) => {
                     </div>
                     <h5>Posté {dateFormater(post.date)}</h5>
                 </div>
-                <div className="right-part">
-                    <span>
-                        <i className="fa-solid fa-pen-to-square"></i>
-                    </span>
-                    <span>Supprimer</span>
-                </div>
+
+                {post.authorId === user?.uid && (
+                    <div className="right-part">
+                        <span>
+                            <i className="fa-solid fa-pen-to-square"></i>
+                        </span>
+                        <span>Supprimer</span>
+                    </div>
+                )}
+
             </div>
             <p>{post.message}</p>
         </div>
