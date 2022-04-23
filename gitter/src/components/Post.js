@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { db } from '../utils/firebase.config';
+import { updateDoc, doc } from 'firebase/firestore';
+import Delete from './Delete';
 
 const Post = ({ post, user }) => {
 
@@ -20,6 +23,19 @@ const Post = ({ post, user }) => {
 
     };
 
+    const handleEdit = () => {
+        setEdit(false);
+
+        // envoie à la bdd de firebase avec la methode 
+        // updateDoc(doc(nom de la bdd, collection, id de ce qu'on veut editer), ce qu'on passe comme données))
+
+        // editMess && updateDoc(doc(db, "posts", post.id), { message: editMess });
+        // ou la condition plus lisible ci-dessous
+        if (editMess) {
+            updateDoc(doc(db, "posts", post.id), { message: editMess });
+        }
+    };
+
     return (
         <div className="post">
             <div className="post-header">
@@ -36,7 +52,7 @@ const Post = ({ post, user }) => {
                         <span onClick={() => setEdit(!edit)}>
                             <i className="fa-solid fa-pen-to-square"></i>
                         </span>
-                        <span>Supprimer</span>
+                        <Delete postId={post.id} />
                     </div>
                 )}
 
@@ -48,7 +64,7 @@ const Post = ({ post, user }) => {
                         value={editMess ? editMess : post.message}
                         onChange={(e) => setEditMess(e.target.value)}>
                     </textarea>
-                    <button className="edit-btn" onClick={() => setEdit(false)}>Modifier le message</button>
+                    <button className="edit-btn" onClick={() => handleEdit()}>Modifier le message</button>
                 </>
 
             ) : (
