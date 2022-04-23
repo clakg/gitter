@@ -46,8 +46,7 @@ const CommentPost = ({ post }) => {
             <h5 className="comment-title">Commentaires</h5>
 
             {
-                post.comments &&
-                post.comments.map((comment, index) => (
+                post.comments && post.comments.map((comment, index) => (
                     <CommentCard comment={comment} key={index} />
                 ))
             }
