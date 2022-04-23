@@ -16,7 +16,6 @@ const App = () => {
 
   // création de la requete Read => on va chercher les données dans la bdd + les mettre dans un variable + les lister en map
   const [posts, setPosts] = useState([]);
-  console.log(posts, setPosts);
 
   // pour verifier si l'utilisateur est connecté, on utilise la méthode de firebase onAuthStateChanged()
   onAuthStateChanged(auth, (currentUser) => {
@@ -53,13 +52,11 @@ const App = () => {
       </div>
       <div className="posts-container">
         {
-          posts.length > 0 && (
-            posts
-              .sort((a, b) => b.date - a.date)
-              .map((post) => (
-                <Post post={post} key={post.id} user={user} />
-              ))
-          )
+          posts.length > 0 &&
+          posts
+            .sort((a, b) => b.date - a.date)
+            .map((post) => <Post post={post} key={post.id} user={user} />)
+
         }
       </div>
     </div>

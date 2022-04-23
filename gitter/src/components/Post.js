@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../utils/firebase.config';
 import { updateDoc, doc } from 'firebase/firestore';
 import Delete from './Delete';
+import CommentPost from './CommentPost';
 
 const Post = ({ post, user }) => {
 
@@ -61,17 +62,19 @@ const Post = ({ post, user }) => {
                 <>
                     <textarea
                         autoFocus
-                        value={editMess ? editMess : post.message}
+                        defaultValue={editMess ? editMess : post.message}
                         onChange={(e) => setEditMess(e.target.value)}>
                     </textarea>
-                    <button className="edit-btn" onClick={() => handleEdit()}>Modifier le message</button>
+                    <button className="edit-btn" onClick={() => handleEdit()}>
+                        Modifier le message
+                    </button>
                 </>
 
             ) : (
                 <p>{editMess ? editMess : post.message}</p>
             )
             }
-
+            <CommentPost post={post} />
         </div>
     );
 };
