@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Post = ({ post, user }) => {
+
+    const [edit, setEdit] = useState(false);
+    const [editMess, setEditMess] = useState(null);
 
     const dateFormater = (date) => {
         let day = Math.floor(
@@ -30,7 +33,7 @@ const Post = ({ post, user }) => {
 
                 {post.authorId === user?.uid && (
                     <div className="right-part">
-                        <span>
+                        <span onClick={() => setEdit(!edit)}>
                             <i className="fa-solid fa-pen-to-square"></i>
                         </span>
                         <span>Supprimer</span>
@@ -38,7 +41,21 @@ const Post = ({ post, user }) => {
                 )}
 
             </div>
-            <p>{post.message}</p>
+            {edit ? (
+                <>
+                    <textarea
+                        autoFocus
+                        value={editMess ? editMess : post.message}
+                        onChange={(e) => setEditMess(e.target.value)}>
+                    </textarea>
+                    <button className="edit-btn" onClick={() => setEdit(false)}>Modifier le message</button>
+                </>
+
+            ) : (
+                <p>{editMess ? editMess : post.message}</p>
+            )
+            }
+
         </div>
     );
 };
