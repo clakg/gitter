@@ -6,16 +6,19 @@ import CreatePost from './components/CreatePost';
 
 // firebase config 
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth, db } from './utils/firebase.config';
-import { getDocs, collection } from 'firebase/firestore';
+import { auth } from './utils/firebase.config';
+import { useDispatch, useSelector } from "react-redux";
 import Post from './components/Post';
+import { getPosts } from './actions/post.action';
 
 const App = () => {
 
   const [user, setUser] = useState(null);
 
   // création de la requete Read => on va chercher les données dans la bdd + les mettre dans un variable + les lister en map
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector((state) => state.postReducer);
+
+  const dispatch = useDispatch();
 
   // pour verifier si l'utilisateur est connecté, on utilise la méthode de firebase onAuthStateChanged()
   onAuthStateChanged(auth, (currentUser) => {
@@ -26,8 +29,7 @@ const App = () => {
   // getDocs doit savoir où il doit aller chercher les données.
   // ici c'est dans une collection qui prend en parametre la bdd et la collection attendue
   useEffect(() => {
-    getDocs(collection(db, "posts")).then((res) =>
-      setPosts(res.docs.map((doc) => ({ ...doc.data(), id: doc.id }))))
+    dispatch(getPosts())
   }, []);
 
   const handleLogout = async () => {
