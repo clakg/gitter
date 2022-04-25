@@ -10,9 +10,9 @@ export const getPosts = () => {
                 dispatch({
                     type: GET_POSTS,
                     payload: res.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-                })
+                });
             })
             .catch((err) => console.log(err))
 
-    }
-}
+    };
+};

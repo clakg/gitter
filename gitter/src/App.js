@@ -30,7 +30,7 @@ const App = () => {
   // ici c'est dans une collection qui prend en parametre la bdd et la collection attendue
   useEffect(() => {
     dispatch(getPosts())
-  }, []);
+  });
 
   const handleLogout = async () => {
     await signOut(auth)
