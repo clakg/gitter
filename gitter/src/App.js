@@ -56,15 +56,17 @@ const App = () => {
 
         {user ? <CreatePost uid={user.uid} displayName={user.displayName} /> : <ConnectModal />}
       </div>
-      <div className="posts-container">
-        {
-          posts.length > 0 &&
-          posts
-            .sort((a, b) => b.date - a.date)
-            .map((post) => <Post post={post} key={post.id} user={user} />)
+      {user && (
+        <div className="posts-container">
+          {
+            posts.length > 0 &&
+            posts
+              .sort((a, b) => b.date - a.date)
+              .map((post) => <Post post={post} key={post.id} user={user} />)
 
-        }
-      </div>
+          }
+        </div>
+      )}
     </div>
   );
 };
