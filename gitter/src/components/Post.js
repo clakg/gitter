@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { db } from '../utils/firebase.config';
-import { updateDoc, doc } from 'firebase/firestore';
+//import { db } from '../utils/firebase.config';
+//import { updateDoc, doc } from 'firebase/firestore';
 import Delete from './Delete';
 import CommentPost from './CommentPost';
+import { editPost } from '../actions/post.action';
+import { useDispatch } from "react-redux";
 
 const Post = ({ post, user }) => {
 
     const [edit, setEdit] = useState(false);
     const [editMess, setEditMess] = useState(null);
+
+    const dispatch = useDispatch()
 
     const dateFormater = (date) => {
         let day = Math.floor(
@@ -33,7 +37,12 @@ const Post = ({ post, user }) => {
         // editMess && updateDoc(doc(db, "posts", post.id), { message: editMess });
         // ou la condition plus lisible ci-dessous
         if (editMess) {
-            updateDoc(doc(db, "posts", post.id), { message: editMess });
+            // Edit without Redux
+            //updateDoc(doc(db, "posts", post.id), { message: editMess });
+            dispatch(editPost({
+                id: post.id,
+                message: editMess
+            }))
         }
     };
 

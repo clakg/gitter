@@ -30,7 +30,11 @@ const App = () => {
   // ici c'est dans une collection qui prend en parametre la bdd et la collection attendue
   useEffect(() => {
     dispatch(getPosts())
-  });
+    // getDocs(collection(db, "posts"))
+    // .then((res) => {
+    // setPosts(res.docs.map((doc)=>({...doc.data(), id: doc.id})))
+    //})
+  })
 
   const handleLogout = async () => {
     await signOut(auth)
