@@ -61,7 +61,7 @@ const CommentPost = ({ post }) => {
 
             {user ? (
                 <form onSubmit={(e) => handleComment(e)}>
-                    <textarea placeholder='Envoyer votre commentaire' ref={answerContent}
+                    <textarea placeholder='Votre commentaire ou suggestion...' ref={answerContent}
                     ></textarea>
                     <input type="submit" value="Envoyer" />
                 </form>

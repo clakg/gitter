@@ -31,6 +31,7 @@
         }
       }
     }
+
     .signup-container,
     .login-container {
       min-height: 200px;
@@ -51,6 +52,7 @@
       }
     }
   }
+
   .user-infos {
     display: flex;
     align-items: center;
@@ -67,11 +69,13 @@
       box-shadow: $shadow;
       transform: translateY(-10px);
     }
+
     h4 {
       text-transform: capitalize;
       font-size: 2.5rem;
       transform: translate(10px, -10px);
     }
+
     button {
       position: absolute;
       right: 6px;
@@ -80,6 +84,7 @@
       color: $color1;
     }
   }
+
   .new-post-modal {
     form {
       display: grid;
@@ -89,12 +94,24 @@
         font-size: 1.3rem;
         border-radius: 10px 10px 0 10px;
       }
+
       input {
         width: 100px;
         margin-left: auto;
         margin-top: 0px;
         border-radius: 10px 0 10px 10px;
       }
+    }
+  }
+
+  .logoutCustom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      margin: 10px 0 6px 10px;
     }
   }
 }

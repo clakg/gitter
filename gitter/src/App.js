@@ -49,14 +49,17 @@ const App = () => {
             <span>{user?.displayName[0]}</span>
             <h4>{user?.displayName}</h4>
             <button onClick={() => handleLogout()}>
-              <i className="fa-solid fa-arrow-right-from-bracket"></i>
+              <div className='logoutCustom'>
+                <p>Se déconnecter</p>
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
+              </div>
             </button>
           </div>
         )}
 
         {user ? <CreatePost uid={user.uid} displayName={user.displayName} /> : <ConnectModal />}
       </div>
-      {user && (
+      {user ? (
         <div className="posts-container">
           {
             posts.length > 0 &&
@@ -66,7 +69,8 @@ const App = () => {
 
           }
         </div>
-      )}
+      ) : <div>Présentation</div>
+      }
     </div>
   );
 };

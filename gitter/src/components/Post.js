@@ -51,20 +51,32 @@ const Post = ({ post, user }) => {
             <div className="post-header">
                 <div className="left-part">
                     <div className="title">
-                        <span>{post.author[0]}</span>
-                        <h2>{post.author}</h2>
+                        <h1>{post.title}</h1>
+                        {post.category &&
+                            <h1>Catégorie: {post.category}</h1>
+                        }
                     </div>
-                    <h5>Posté {dateFormater(post.date)}</h5>
+                    <div className="subtitle">
+                        <div className='authorCustom'>
+                            <span>{post.author[0]}</span>
+                            <h5>{post.author}</h5>
+                        </div>
+                        <div className='dateActionContainer'>
+                            <h5>Posté {dateFormater(post.date)}</h5>
+                            {post.authorId === user?.uid && (
+                                <div className="right-part">
+                                    <span onClick={() => setEdit(!edit)}>
+                                        <i className="fa-solid fa-pen-to-square"></i>
+                                    </span>
+                                    <Delete postId={post.id} />
+                                </div>
+                            )}
+                        </div>
+
+                    </div>
                 </div>
 
-                {post.authorId === user?.uid && (
-                    <div className="right-part">
-                        <span onClick={() => setEdit(!edit)}>
-                            <i className="fa-solid fa-pen-to-square"></i>
-                        </span>
-                        <Delete postId={post.id} />
-                    </div>
-                )}
+
 
             </div>
             {edit ? (

@@ -9,16 +9,20 @@
     box-shadow: $shadow;
     padding: 20px;
     position: relative;
-    border-left: 1px solid rgb(143, 0, 0);
+    //border-left: 1px solid rgb(143, 0, 0);
 
     .title {
       display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       align-items: center;
       text-transform: uppercase;
+
       h2 {
         text-transform: capitalize;
         font-size: 2rem;
       }
+
       span {
         background: $color1;
         border-radius: 150px;
@@ -33,21 +37,57 @@
       }
     }
 
+    .subtitle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-transform: uppercase;
+
+      h2 {
+        text-transform: capitalize;
+        font-size: 2rem;
+      }
+
+      span {
+        background: $color1;
+        border-radius: 150px;
+        font-size: 1rem;
+        margin: 0px 10px 0 0;
+        height: 22px;
+        width: 22px;
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .authorCustom {
+      display: flex;
+      align-items: center;
+    }
+
     h5 {
       color: $grey;
     }
+
+    .spanAction {
+      margin: 0px;
+    }
+
     .right-part {
-      position: absolute;
-      top: 20px;
-      right: 12px;
+      display: flex;
+      justify-content: flex-end;
+      margin: 10px 0 0 10px;
 
       i {
         margin: 0 5px;
+        padding-top: 3px;
         border-radius: 20px;
         height: 20px;
         width: 14px;
         font-size: 0.85rem;
-        color: $color1;
+        //color: $color1;
         cursor: pointer;
         transition: 0.2s;
 
@@ -56,6 +96,7 @@
         }
       }
     }
+
     p {
       margin: 20px 0 10px;
     }
@@ -63,6 +104,7 @@
     .comment-title {
       margin-top: 30px;
     }
+
     .comment-post {
       h5 {
         text-transform: capitalize;
@@ -79,6 +121,7 @@
       height: 65px;
       background: rgb(216, 216, 216);
     }
+
     input[type="submit"] {
       width: 100px;
       display: block;
