@@ -69,7 +69,16 @@ const App = () => {
 
           }
         </div>
-      ) : <div>Présentation</div>
+      ) : <div className='presCustom'>
+        <h1>Présentation</h1>
+        <p>
+          Faire sa propre veille technologique c'est bien, mais le faire à plusieurs, c'est mieux !<br />
+          Gitter est un projet personnel permettant la collaboration de plusieurs développeurs à poster et à partager leurs veilles technologiques.<br />
+          Il est cours de réalisation, en front ReactJs v.18.0 et en back Firebase authenticator et firestore pour la base de données.
+        </p>
+
+        <div className='signature'>Clarisse K.</div>
+      </div>
       }
     </div>
   );

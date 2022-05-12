@@ -1,0 +1,15 @@
+.presCustom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10vh;
+
+    h1 {
+        margin: 20px 0;
+    }
+
+    .signature {
+        margin: 20px 0;
+    }
+}
